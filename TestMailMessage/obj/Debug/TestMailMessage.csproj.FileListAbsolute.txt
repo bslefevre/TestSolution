@@ -1,0 +1,5 @@
+c:\users\bjorn.le.fevre.hyperion\documents\visual studio 2010\Projects\TestSolution\TestMailMessage\obj\Debug\ResolveAssemblyReference.cache
+c:\users\bjorn.le.fevre.hyperion\documents\visual studio 2010\Projects\TestSolution\TestMailMessage\bin\Debug\TestMailMessage.dll
+c:\users\bjorn.le.fevre.hyperion\documents\visual studio 2010\Projects\TestSolution\TestMailMessage\bin\Debug\TestMailMessage.pdb
+c:\users\bjorn.le.fevre.hyperion\documents\visual studio 2010\Projects\TestSolution\TestMailMessage\obj\Debug\TestMailMessage.dll
+c:\users\bjorn.le.fevre.hyperion\documents\visual studio 2010\Projects\TestSolution\TestMailMessage\obj\Debug\TestMailMessage.pdb
