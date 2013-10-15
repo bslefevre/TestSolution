@@ -103,7 +103,7 @@ namespace TestMailMessage
         {
             var value = match.Value;
 
-            //var imgRemoved = value.Replace("img src=\"", "");
+            var imgRemoved = value.Replace("img src=\"", "");
 
             var strings = value.Replace("\"", "").Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries);
             var stringArray = strings.ToArray();
