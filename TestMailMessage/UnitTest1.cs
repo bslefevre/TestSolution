@@ -17,6 +17,7 @@ namespace TestMailMessage
         {
             //var mailMessage = new DCMailMessage();
             const string mailadres = "bjorn.le.fevre@carthago-ict.nl";
+            const string mailAdres2 = "grotetest@test.nl";
             //mailMessage.To = mailadres;
 
             try
