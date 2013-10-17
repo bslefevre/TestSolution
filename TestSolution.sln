@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestXtraUserControl", "TestXtraUserControl\TestXtraUserControl.csproj", "{6D5D653F-72EA-4FFC-B129-7988EF65FC69}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = TestSolution.vsmdi
@@ -23,6 +25,10 @@ Global
 		{D5E49B51-A19C-489C-B62B-99ABF9B9FDD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5E49B51-A19C-489C-B62B-99ABF9B9FDD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5E49B51-A19C-489C-B62B-99ABF9B9FDD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D5D653F-72EA-4FFC-B129-7988EF65FC69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D5D653F-72EA-4FFC-B129-7988EF65FC69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D5D653F-72EA-4FFC-B129-7988EF65FC69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D5D653F-72EA-4FFC-B129-7988EF65FC69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
