@@ -5,7 +5,7 @@ using Alure.Base.BL.Test;
 namespace TestBusinessObject
 {
     [TestClass]
-    public class UnitTest1 : TestBase
+    public class WerkstroomActieDefinitieTest : TestBase
     {
         [TestMethod]
         [TestCategory("UnitTest")]
