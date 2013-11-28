@@ -1,0 +1,988 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.webservices.nl/soap/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://www.webservices.nl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://www.webservices.nl/soap/">
+      <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+      <xsd:complexType name="HeaderAuthenticateType">
+        <xsd:all>
+          <xsd:element name="reactid" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="HeaderLoginType">
+        <xsd:all>
+          <xsd:element name="username" type="xsd:string" />
+          <xsd:element name="password" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="DutchBusinessDossier">
+        <xsd:all>
+          <xsd:element name="update_info" type="tns:DutchBusinessUpdateReference" />
+          <xsd:element name="dossier_number" type="xsd:string" />
+          <xsd:element minOccurs="0" name="establishment_number" type="xsd:string" />
+          <xsd:element minOccurs="0" name="main_establishment_number" type="xsd:string" />
+          <xsd:element name="indication_main_establishment" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="rsin_number" type="xsd:string" />
+          <xsd:element name="chamber_number" type="xsd:string" />
+          <xsd:element name="legal_form_code" type="xsd:string" />
+          <xsd:element name="legal_form_text" type="xsd:string" />
+          <xsd:element name="indication_organisation_code" type="xsd:string" />
+          <xsd:element name="legal_name" type="xsd:string" />
+          <xsd:element name="trade_name_45" type="xsd:string" />
+          <xsd:element name="trade_name_full" type="xsd:string" />
+          <xsd:element minOccurs="0" name="trade_names" type="tns:stringArray" />
+          <xsd:element name="establishment_postcode" type="xsd:string" />
+          <xsd:element name="establishment_city" type="xsd:string" />
+          <xsd:element name="establishment_street" type="xsd:string" />
+          <xsd:element name="establishment_house_number" type="xsd:int" />
+          <xsd:element name="establishment_house_number_addition" type="xsd:string" />
+          <xsd:element name="correspondence_postcode" type="xsd:string" />
+          <xsd:element name="correspondence_city" type="xsd:string" />
+          <xsd:element name="correspondence_street" type="xsd:string" />
+          <xsd:element name="correspondence_house_number" type="xsd:int" />
+          <xsd:element name="correspondence_house_number_addition" type="xsd:string" />
+          <xsd:element name="correspondence_country" type="xsd:string" />
+          <xsd:element name="telephone_number" type="xsd:string" />
+          <xsd:element name="mobile_number" type="xsd:string" />
+          <xsd:element name="domain_name" type="xsd:string" />
+          <xsd:element name="contact_title1" type="xsd:string" />
+          <xsd:element name="contact_title2" type="xsd:string" />
+          <xsd:element name="contact_initials" type="xsd:string" />
+          <xsd:element name="contact_prefix" type="xsd:string" />
+          <xsd:element name="contact_surname" type="xsd:string" />
+          <xsd:element name="contact_gender" type="xsd:string" />
+          <xsd:element name="primary_sbi_code" type="xsd:string" />
+          <xsd:element name="secondary_sbi_code1" type="xsd:string" />
+          <xsd:element name="secondary_sbi_code2" type="xsd:string" />
+          <xsd:element name="primary_sbi_code_text" type="xsd:string" />
+          <xsd:element name="secondary_sbi_code1_text" type="xsd:string" />
+          <xsd:element name="secondary_sbi_code2_text" type="xsd:string" />
+          <xsd:element name="personnel" type="xsd:int" />
+          <xsd:element name="class_personnel" type="xsd:int" />
+          <xsd:element name="personnel_fulltime" type="xsd:int" />
+          <xsd:element name="class_personnel_fulltime" type="xsd:int" />
+          <xsd:element minOccurs="0" name="personnel_reference_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="indication_import" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="indication_export" type="xsd:boolean" />
+          <xsd:element name="indication_economically_active" type="xsd:boolean" />
+          <xsd:element name="indication_non_mailing" type="xsd:boolean" />
+          <xsd:element name="indication_bankruptcy" type="xsd:boolean" />
+          <xsd:element name="indication_dip" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="authorized_share_capital" type="xsd:long" />
+          <xsd:element minOccurs="0" name="authorized_share_capital_currency" type="xsd:string" />
+          <xsd:element minOccurs="0" name="paid_up_share_capital" type="xsd:long" />
+          <xsd:element minOccurs="0" name="paid_up_share_capital_currency" type="xsd:string" />
+          <xsd:element minOccurs="0" name="issued_share_capital" type="xsd:long" />
+          <xsd:element minOccurs="0" name="issued_share_capital_currency" type="xsd:string" />
+          <xsd:element minOccurs="0" name="founding_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="continuation_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="establishment_date" type="tns:DutchBusinessDate" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="DutchBusinessExtractDocument">
+        <xsd:all>
+          <xsd:element name="document" type="xsd:base64Binary" />
+          <xsd:element name="document_date" type="xsd:dateTime" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="DutchBusinessExtractDocumentData">
+        <xsd:all>
+          <xsd:element minOccurs="0" name="document" type="xsd:base64Binary" />
+          <xsd:element name="dossier_number" type="xsd:string" />
+          <xsd:element minOccurs="0" name="establishment_number" type="xsd:string" />
+          <xsd:element minOccurs="0" name="status" type="xsd:string" />
+          <xsd:element name="document_date" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="legal_entity" type="tns:DutchBusinessLegalEntity" />
+          <xsd:element minOccurs="0" name="enterprise" type="tns:DutchBusinessEnterprise" />
+          <xsd:element minOccurs="0" name="partnership" type="tns:DutchBusinessPartnershipArray" />
+          <xsd:element minOccurs="0" name="establishments" type="tns:DutchBusinessEstablishmentArray" />
+          <xsd:element minOccurs="0" name="positions" type="tns:DutchBusinessPositionArray" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="DutchBusinessLegalEntity">
+        <xsd:all>
+          <xsd:element minOccurs="0" name="rsin_number" type="xsd:string" />
+          <xsd:element minOccurs="0" name="name" type="xsd:string" />
+          <xsd:element minOccurs="0" name="alternative_name" type="xsd:string" />
+          <xsd:element minOccurs="0" name="shortened_name" type="xsd:string" />
+          <xsd:element minOccurs="0" name="registration" type="xsd:string" />
+          <xsd:element minOccurs="0" name="status" type="xsd:string" />
+          <xsd:element minOccurs="0" name="legal_form_text" type="xsd:string" />
+          <xsd:element minOccurs="0" name="legal_form_change" type="xsd:string" />
+          <xsd:element minOccurs="0" name="foreign_legal_form_description" type="xsd:string" />
+          <xsd:element minOccurs="0" name="sbi_codes" type="tns:stringArray" />
+          <xsd:element minOccurs="0" name="sbi_codes_text" type="tns:stringArray" />
+          <xsd:element minOccurs="0" name="activity" type="xsd:string" />
+          <xsd:element minOccurs="0" name="company_arrangement" type="xsd:string" />
+          <xsd:element minOccurs="0" name="legal_name" type="xsd:string" />
+          <xsd:element minOccurs="0" name="statutory_seat" type="xsd:string" />
+          <xsd:element minOccurs="0" name="registration_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="founding_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="discontinuation_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="dissolution_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="dissolution_reason" type="xsd:string" />
+          <xsd:element minOccurs="0" name="removal_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="registration_end_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="legal_entity_end_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="liquidation_closure_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="liquidation_reopening_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="deed_incorporation_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="deed_last_statutes_amendment_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="last_statutes_amendment_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="liability" type="xsd:string" />
+          <xsd:element minOccurs="0" name="merger_description" type="xsd:string" />
+          <xsd:element minOccurs="0" name="annual_report_submission" type="xsd:string" />
+          <xsd:element minOccurs="0" name="authorized_share_capital" type="xsd:long" />
+          <xsd:element minOccurs="0" name="authorized_share_capital_currency" type="xsd:string" />
+          <xsd:element minOccurs="0" name="issued_share_capital" type="xsd:long" />
+          <xsd:element minOccurs="0" name="issued_share_capital_currency" type="xsd:string" />
+          <xsd:element minOccurs="0" name="paid_up_share_capital" type="xsd:long" />
+          <xsd:element minOccurs="0" name="paid_up_share_capital_currency" type="xsd:string" />
+          <xsd:element minOccurs="0" name="establishment_postcode" type="xsd:string" />
+          <xsd:element minOccurs="0" name="establishment_city" type="xsd:string" />
+          <xsd:element minOccurs="0" name="establishment_street" type="xsd:string" />
+          <xsd:element minOccurs="0" name="establishment_house_number" type="xsd:int" />
+          <xsd:element minOccurs="0" name="establishment_house_number_addition" type="xsd:string" />
+          <xsd:element minOccurs="0" name="establishment_country" type="xsd:string" />
+          <xsd:element minOccurs="0" name="correspondence_postcode" type="xsd:string" />
+          <xsd:element minOccurs="0" name="correspondence_city" type="xsd:string" />
+          <xsd:element minOccurs="0" name="correspondence_street" type="xsd:string" />
+          <xsd:element minOccurs="0" name="correspondence_house_number" type="xsd:int" />
+          <xsd:element minOccurs="0" name="correspondence_house_number_addition" type="xsd:string" />
+          <xsd:element minOccurs="0" name="correspondence_country" type="xsd:string" />
+          <xsd:element minOccurs="0" name="duration" type="xsd:string" />
+          <xsd:element minOccurs="0" name="duration_end_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="shares" type="xsd:string" />
+          <xsd:element minOccurs="0" name="share_holders" type="xsd:string" />
+          <xsd:element minOccurs="0" name="telephone_numbers" type="tns:stringArray" />
+          <xsd:element minOccurs="0" name="fax_numbers" type="tns:stringArray" />
+          <xsd:element minOccurs="0" name="email_addresses" type="tns:stringArray" />
+          <xsd:element minOccurs="0" name="domain_names" type="tns:stringArray" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="DutchBusinessPartnership">
+        <xsd:all>
+          <xsd:element minOccurs="0" name="dossier_number" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rsin_number" type="xsd:string" />
+          <xsd:element minOccurs="0" name="name" type="xsd:string" />
+          <xsd:element minOccurs="0" name="registration" type="xsd:string" />
+          <xsd:element minOccurs="0" name="status" type="xsd:string" />
+          <xsd:element minOccurs="0" name="legal_form_text" type="xsd:string" />
+          <xsd:element minOccurs="0" name="founding_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="dissolution_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="function_start_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="duration" type="xsd:string" />
+          <xsd:element minOccurs="0" name="limited_partnership_capital" type="xsd:long" />
+          <xsd:element minOccurs="0" name="limited_partnership_capital_currency" type="xsd:string" />
+          <xsd:element minOccurs="0" name="establishment_postcode" type="xsd:string" />
+          <xsd:element minOccurs="0" name="establishment_city" type="xsd:string" />
+          <xsd:element minOccurs="0" name="establishment_street" type="xsd:string" />
+          <xsd:element minOccurs="0" name="establishment_house_number" type="xsd:int" />
+          <xsd:element minOccurs="0" name="establishment_house_number_addition" type="xsd:string" />
+          <xsd:element minOccurs="0" name="establishment_country" type="xsd:string" />
+          <xsd:element minOccurs="0" name="silent_partners" type="xsd:int" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="DutchBusinessPartnershipArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:DutchBusinessPartnership" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DutchBusinessEnterprise">
+        <xsd:all>
+          <xsd:element minOccurs="0" name="rsin_number" type="xsd:string" />
+          <xsd:element minOccurs="0" name="name" type="xsd:string" />
+          <xsd:element minOccurs="0" name="registration" type="xsd:string" />
+          <xsd:element minOccurs="0" name="status" type="xsd:string" />
+          <xsd:element minOccurs="0" name="legal_form_text" type="xsd:string" />
+          <xsd:element minOccurs="0" name="trade_names" type="tns:stringArray" />
+          <xsd:element minOccurs="0" name="activity" type="xsd:string" />
+          <xsd:element minOccurs="0" name="description" type="xsd:string" />
+          <xsd:element minOccurs="0" name="sbi_codes" type="tns:stringArray" />
+          <xsd:element minOccurs="0" name="sbi_codes_text" type="tns:stringArray" />
+          <xsd:element minOccurs="0" name="establishment_postcode" type="xsd:string" />
+          <xsd:element minOccurs="0" name="establishment_city" type="xsd:string" />
+          <xsd:element minOccurs="0" name="establishment_street" type="xsd:string" />
+          <xsd:element minOccurs="0" name="establishment_house_number" type="xsd:int" />
+          <xsd:element minOccurs="0" name="establishment_house_number_addition" type="xsd:string" />
+          <xsd:element minOccurs="0" name="establishment_country" type="xsd:string" />
+          <xsd:element minOccurs="0" name="correspondence_postcode" type="xsd:string" />
+          <xsd:element minOccurs="0" name="correspondence_city" type="xsd:string" />
+          <xsd:element minOccurs="0" name="correspondence_street" type="xsd:string" />
+          <xsd:element minOccurs="0" name="correspondence_house_number" type="xsd:int" />
+          <xsd:element minOccurs="0" name="correspondence_house_number_addition" type="xsd:string" />
+          <xsd:element minOccurs="0" name="correspondence_country" type="xsd:string" />
+          <xsd:element minOccurs="0" name="telephone_numbers" type="tns:stringArray" />
+          <xsd:element minOccurs="0" name="fax_numbers" type="tns:stringArray" />
+          <xsd:element minOccurs="0" name="email_addresses" type="tns:stringArray" />
+          <xsd:element minOccurs="0" name="domain_names" type="tns:stringArray" />
+          <xsd:element minOccurs="0" name="establishment_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="incorporation_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="founding_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="discontinuation_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="date_since" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="personnel" type="xsd:int" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="DutchBusinessEstablishment">
+        <xsd:all>
+          <xsd:element minOccurs="0" name="establishment_number" type="xsd:string" />
+          <xsd:element minOccurs="0" name="main_establishment" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="status" type="xsd:string" />
+          <xsd:element minOccurs="0" name="legal_form_text" type="xsd:string" />
+          <xsd:element minOccurs="0" name="trade_names" type="tns:stringArray" />
+          <xsd:element minOccurs="0" name="activity" type="xsd:string" />
+          <xsd:element minOccurs="0" name="description" type="xsd:string" />
+          <xsd:element minOccurs="0" name="sbi_codes" type="tns:stringArray" />
+          <xsd:element minOccurs="0" name="sbi_codes_text" type="tns:stringArray" />
+          <xsd:element minOccurs="0" name="establishment_postcode" type="xsd:string" />
+          <xsd:element minOccurs="0" name="establishment_city" type="xsd:string" />
+          <xsd:element minOccurs="0" name="establishment_street" type="xsd:string" />
+          <xsd:element minOccurs="0" name="establishment_house_number" type="xsd:int" />
+          <xsd:element minOccurs="0" name="establishment_house_number_addition" type="xsd:string" />
+          <xsd:element minOccurs="0" name="establishment_country" type="xsd:string" />
+          <xsd:element minOccurs="0" name="correspondence_postcode" type="xsd:string" />
+          <xsd:element minOccurs="0" name="correspondence_city" type="xsd:string" />
+          <xsd:element minOccurs="0" name="correspondence_street" type="xsd:string" />
+          <xsd:element minOccurs="0" name="correspondence_house_number" type="xsd:int" />
+          <xsd:element minOccurs="0" name="correspondence_house_number_addition" type="xsd:string" />
+          <xsd:element minOccurs="0" name="correspondence_country" type="xsd:string" />
+          <xsd:element minOccurs="0" name="curator_postcode" type="xsd:string" />
+          <xsd:element minOccurs="0" name="curator_city" type="xsd:string" />
+          <xsd:element minOccurs="0" name="curator_street" type="xsd:string" />
+          <xsd:element minOccurs="0" name="curator_house_number" type="xsd:int" />
+          <xsd:element minOccurs="0" name="curator_house_number_addition" type="xsd:string" />
+          <xsd:element minOccurs="0" name="curator_country" type="xsd:string" />
+          <xsd:element minOccurs="0" name="telephone_numbers" type="tns:stringArray" />
+          <xsd:element minOccurs="0" name="fax_numbers" type="tns:stringArray" />
+          <xsd:element minOccurs="0" name="email_addresses" type="tns:stringArray" />
+          <xsd:element minOccurs="0" name="domain_names" type="tns:stringArray" />
+          <xsd:element minOccurs="0" name="establishment_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="date_since" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="personnel" type="xsd:int" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="DutchBusinessEstablishmentArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:DutchBusinessEstablishment" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DutchBusinessPosition">
+        <xsd:all>
+          <xsd:element minOccurs="0" name="trade_names" type="tns:stringArray" />
+          <xsd:element minOccurs="0" name="dossier_number" type="xsd:string" />
+          <xsd:element minOccurs="0" name="establishment_number" type="xsd:string" />
+          <xsd:element minOccurs="0" name="name" type="xsd:string" />
+          <xsd:element minOccurs="0" name="first_name" type="xsd:string" />
+          <xsd:element minOccurs="0" name="title" type="xsd:string" />
+          <xsd:element minOccurs="0" name="initials" type="xsd:string" />
+          <xsd:element minOccurs="0" name="last_name" type="xsd:string" />
+          <xsd:element minOccurs="0" name="function_type" type="xsd:string" />
+          <xsd:element minOccurs="0" name="function_description" type="xsd:string" />
+          <xsd:element minOccurs="0" name="function_title" type="xsd:string" />
+          <xsd:element minOccurs="0" name="function_start_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="function_registration_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="function_end_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="function_authorization" type="xsd:string" />
+          <xsd:element minOccurs="0" name="function_authorization_description" type="xsd:string" />
+          <xsd:element minOccurs="0" name="function_authorization_start_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="function_authorization_signing_power" type="xsd:string" />
+          <xsd:element minOccurs="0" name="function_authorization_end_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="authorization_description" type="xsd:string" />
+          <xsd:element minOccurs="0" name="authorization_start_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="authorization_end_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="inauguration" type="xsd:string" />
+          <xsd:element minOccurs="0" name="inauguration_function" type="xsd:string" />
+          <xsd:element minOccurs="0" name="inauguration_duration" type="xsd:string" />
+          <xsd:element minOccurs="0" name="inauguration_date" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="inauguration_body" type="xsd:string" />
+          <xsd:element minOccurs="0" name="under_receivership" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rights_against_third_parties" type="xsd:string" />
+          <xsd:element minOccurs="0" name="release_of_covenant" type="xsd:string" />
+          <xsd:element minOccurs="0" name="date_deceased" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="date_of_birth" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="place_of_birth" type="xsd:string" />
+          <xsd:element minOccurs="0" name="country_of_birth" type="xsd:string" />
+          <xsd:element minOccurs="0" name="postcode" type="xsd:string" />
+          <xsd:element minOccurs="0" name="city" type="xsd:string" />
+          <xsd:element minOccurs="0" name="street" type="xsd:string" />
+          <xsd:element minOccurs="0" name="house_number" type="xsd:int" />
+          <xsd:element minOccurs="0" name="house_number_addition" type="xsd:string" />
+          <xsd:element minOccurs="0" name="country" type="xsd:string" />
+          <xsd:element minOccurs="0" name="telephone_numbers" type="tns:stringArray" />
+          <xsd:element minOccurs="0" name="date_since" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="date_joined" type="tns:DutchBusinessDate" />
+          <xsd:element minOccurs="0" name="status" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="DutchBusinessPositionArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:DutchBusinessPosition" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DutchBusinessReference">
+        <xsd:all>
+          <xsd:element name="dossier_number" type="xsd:string" />
+          <xsd:element minOccurs="0" name="establishment_number" type="xsd:string" />
+          <xsd:element name="trade_name" type="xsd:string" />
+          <xsd:element name="establishment_city" type="xsd:string" />
+          <xsd:element name="establishment_street" type="xsd:string" />
+          <xsd:element name="correspondence_city" type="xsd:string" />
+          <xsd:element name="correspondence_street" type="xsd:string" />
+          <xsd:element name="indication_economically_active" type="xsd:boolean" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ResultInfo">
+        <xsd:all>
+          <xsd:element name="curpage" type="xsd:int" />
+          <xsd:element name="perpage" type="xsd:int" />
+          <xsd:element name="numpages" type="xsd:int" />
+          <xsd:element name="numresults" type="xsd:int" />
+          <xsd:element name="maxresults" type="xsd:int" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="DutchBusinessReferenceArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:DutchBusinessReference" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DutchBusinessReferencePagedResult">
+        <xsd:all>
+          <xsd:element name="paging" type="tns:ResultInfo" />
+          <xsd:element name="results" type="tns:DutchBusinessReferenceArray" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="DutchBusinessReferenceV2">
+        <xsd:all>
+          <xsd:element name="dossier_number" type="xsd:string" />
+          <xsd:element minOccurs="0" name="establishment_number" type="xsd:string" />
+          <xsd:element name="name" type="xsd:string" />
+          <xsd:element minOccurs="0" name="match_type" type="xsd:string" />
+          <xsd:element name="establishment_city" type="xsd:string" />
+          <xsd:element name="establishment_street" type="xsd:string" />
+          <xsd:element name="correspondence_city" type="xsd:string" />
+          <xsd:element name="correspondence_street" type="xsd:string" />
+          <xsd:element name="indication_economically_active" type="xsd:boolean" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="DutchBusinessReferenceV2Array">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:DutchBusinessReferenceV2" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DutchBusinessReferenceV2PagedResult">
+        <xsd:all>
+          <xsd:element name="paging" type="tns:ResultInfo" />
+          <xsd:element name="results" type="tns:DutchBusinessReferenceV2Array" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="DutchBusinessUpdateReference">
+        <xsd:all>
+          <xsd:element name="dossier_number" type="xsd:string" />
+          <xsd:element minOccurs="0" name="establishment_number" type="xsd:string" />
+          <xsd:element name="update_types" type="tns:stringArray" />
+          <xsd:element name="date_last_update" type="xsd:date" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="DutchBusinessUpdateReferenceArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:DutchBusinessUpdateReference" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DutchBusinessUpdateReferencePagedResult">
+        <xsd:all>
+          <xsd:element name="paging" type="tns:ResultInfo" />
+          <xsd:element name="results" type="tns:DutchBusinessUpdateReferenceArray" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="DutchBusinessDate">
+        <xsd:all>
+          <xsd:element name="Year" type="xsd:int" />
+          <xsd:element minOccurs="0" name="Month" type="xsd:int" />
+          <xsd:element minOccurs="0" name="Day" type="xsd:int" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="stringArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="intArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="loginRequestType">
+        <xsd:all>
+          <xsd:element name="username" type="xsd:string" />
+          <xsd:element name="password" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="loginResponseType">
+        <xsd:all>
+          <xsd:element name="reactid" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="logoutRequestType" />
+      <xsd:complexType name="logoutResponseType" />
+      <xsd:complexType name="dutchBusinessGetDossierRequestType">
+        <xsd:all>
+          <xsd:element name="dossier_number" type="xsd:string" />
+          <xsd:element name="establishment_number" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="dutchBusinessGetDossierResponseType">
+        <xsd:all>
+          <xsd:element name="out" type="tns:DutchBusinessDossier" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="dutchBusinessSearchDossierNumberRequestType">
+        <xsd:all>
+          <xsd:element name="dossier_number" type="xsd:string" />
+          <xsd:element name="establishment_number" type="xsd:string" />
+          <xsd:element name="rsin_number" type="xsd:string" />
+          <xsd:element name="page" type="xsd:int" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="dutchBusinessSearchDossierNumberResponseType">
+        <xsd:all>
+          <xsd:element name="out" type="tns:DutchBusinessReferencePagedResult" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="dutchBusinessSearchParametersV2RequestType">
+        <xsd:all>
+          <xsd:element name="trade_name" type="xsd:string" />
+          <xsd:element name="city" type="xsd:string" />
+          <xsd:element name="street" type="xsd:string" />
+          <xsd:element name="postcode" type="xsd:string" />
+          <xsd:element name="house_number" type="xsd:int" />
+          <xsd:element name="house_number_addition" type="xsd:string" />
+          <xsd:element name="telephone_number" type="xsd:string" />
+          <xsd:element name="domain_name" type="xsd:string" />
+          <xsd:element name="strict_search" type="xsd:boolean" />
+          <xsd:element name="page" type="xsd:int" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="dutchBusinessSearchParametersV2ResponseType">
+        <xsd:all>
+          <xsd:element name="out" type="tns:DutchBusinessReferenceV2PagedResult" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="dutchBusinessSearchPostcodeRequestType">
+        <xsd:all>
+          <xsd:element name="postcode" type="xsd:string" />
+          <xsd:element name="house_number" type="xsd:int" />
+          <xsd:element name="house_number_addition" type="xsd:string" />
+          <xsd:element name="page" type="xsd:int" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="dutchBusinessSearchPostcodeResponseType">
+        <xsd:all>
+          <xsd:element name="out" type="tns:DutchBusinessReferencePagedResult" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="dutchBusinessSearchSelectionRequestType">
+        <xsd:all>
+          <xsd:element name="city" type="tns:stringArray" />
+          <xsd:element name="postcode" type="tns:stringArray" />
+          <xsd:element name="sbi" type="tns:stringArray" />
+          <xsd:element name="primary_sbi_only" type="xsd:boolean" />
+          <xsd:element name="legal_form" type="tns:intArray" />
+          <xsd:element name="employees_min" type="xsd:int" />
+          <xsd:element name="employees_max" type="xsd:int" />
+          <xsd:element name="economically_active" type="xsd:string" />
+          <xsd:element name="financial_status" type="xsd:string" />
+          <xsd:element name="changed_since" type="xsd:string" />
+          <xsd:element name="new_since" type="xsd:string" />
+          <xsd:element name="page" type="xsd:int" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="dutchBusinessSearchSelectionResponseType">
+        <xsd:all>
+          <xsd:element name="out" type="tns:DutchBusinessReferencePagedResult" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="dutchBusinessGetExtractDocumentRequestType">
+        <xsd:all>
+          <xsd:element name="dossier_number" type="xsd:string" />
+          <xsd:element name="allow_caching" type="xsd:boolean" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="dutchBusinessGetExtractDocumentResponseType">
+        <xsd:all>
+          <xsd:element name="out" type="tns:DutchBusinessExtractDocument" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="dutchBusinessGetExtractDocumentDataRequestType">
+        <xsd:all>
+          <xsd:element name="dossier_number" type="xsd:string" />
+          <xsd:element name="allow_caching" type="xsd:boolean" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="dutchBusinessGetExtractDocumentDataResponseType">
+        <xsd:all>
+          <xsd:element name="out" type="tns:DutchBusinessExtractDocumentData" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="dutchBusinessUpdateCheckDossierRequestType">
+        <xsd:all>
+          <xsd:element name="dossier_number" type="xsd:string" />
+          <xsd:element name="establishment_number" type="xsd:string" />
+          <xsd:element name="update_types" type="tns:stringArray" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="dutchBusinessUpdateCheckDossierResponseType">
+        <xsd:all>
+          <xsd:element name="out" type="tns:DutchBusinessUpdateReference" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="dutchBusinessUpdateGetChangedDossiersRequestType">
+        <xsd:all>
+          <xsd:element name="changed_since" type="xsd:date" />
+          <xsd:element name="update_types" type="tns:stringArray" />
+          <xsd:element name="page" type="xsd:int" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="dutchBusinessUpdateGetChangedDossiersResponseType">
+        <xsd:all>
+          <xsd:element name="out" type="tns:DutchBusinessUpdateReferencePagedResult" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="dutchBusinessUpdateGetDossiersRequestType">
+        <xsd:all>
+          <xsd:element name="update_types" type="tns:stringArray" />
+          <xsd:element name="page" type="xsd:int" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="dutchBusinessUpdateGetDossiersResponseType">
+        <xsd:all>
+          <xsd:element name="out" type="tns:DutchBusinessUpdateReferencePagedResult" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="dutchBusinessUpdateAddDossierRequestType">
+        <xsd:all>
+          <xsd:element name="dossier_number" type="xsd:string" />
+          <xsd:element name="establishment_number" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="dutchBusinessUpdateAddDossierResponseType" />
+      <xsd:complexType name="dutchBusinessUpdateRemoveDossierRequestType">
+        <xsd:all>
+          <xsd:element name="dossier_number" type="xsd:string" />
+          <xsd:element name="establishment_number" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="dutchBusinessUpdateRemoveDossierResponseType" />
+      <xsd:complexType name="dutchBusinessSearchParametersRequestType">
+        <xsd:all>
+          <xsd:element name="trade_name" type="xsd:string" />
+          <xsd:element name="city" type="xsd:string" />
+          <xsd:element name="street" type="xsd:string" />
+          <xsd:element name="postcode" type="xsd:string" />
+          <xsd:element name="house_number" type="xsd:int" />
+          <xsd:element name="house_number_addition" type="xsd:string" />
+          <xsd:element name="telephone_number" type="xsd:string" />
+          <xsd:element name="domain_name" type="xsd:string" />
+          <xsd:element name="strict_search" type="xsd:boolean" />
+          <xsd:element name="page" type="xsd:int" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="dutchBusinessSearchParametersResponseType">
+        <xsd:all>
+          <xsd:element name="out" type="tns:DutchBusinessReferencePagedResult" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:element name="errorcode" type="xsd:string" />
+      <xsd:element name="login" type="tns:loginRequestType" />
+      <xsd:element name="loginResponse" type="tns:loginResponseType" />
+      <xsd:element name="HeaderLogin" type="tns:HeaderLoginType" />
+      <xsd:element name="HeaderAuthenticate" type="tns:HeaderAuthenticateType" />
+      <xsd:element name="logout" type="tns:logoutRequestType" />
+      <xsd:element name="logoutResponse" type="tns:logoutResponseType" />
+      <xsd:element name="dutchBusinessGetDossier" type="tns:dutchBusinessGetDossierRequestType" />
+      <xsd:element name="dutchBusinessGetDossierResponse" type="tns:dutchBusinessGetDossierResponseType" />
+      <xsd:element name="dutchBusinessSearchDossierNumber" type="tns:dutchBusinessSearchDossierNumberRequestType" />
+      <xsd:element name="dutchBusinessSearchDossierNumberResponse" type="tns:dutchBusinessSearchDossierNumberResponseType" />
+      <xsd:element name="dutchBusinessSearchParametersV2" type="tns:dutchBusinessSearchParametersV2RequestType" />
+      <xsd:element name="dutchBusinessSearchParametersV2Response" type="tns:dutchBusinessSearchParametersV2ResponseType" />
+      <xsd:element name="dutchBusinessSearchPostcode" type="tns:dutchBusinessSearchPostcodeRequestType" />
+      <xsd:element name="dutchBusinessSearchPostcodeResponse" type="tns:dutchBusinessSearchPostcodeResponseType" />
+      <xsd:element name="dutchBusinessSearchSelection" type="tns:dutchBusinessSearchSelectionRequestType" />
+      <xsd:element name="dutchBusinessSearchSelectionResponse" type="tns:dutchBusinessSearchSelectionResponseType" />
+      <xsd:element name="dutchBusinessGetExtractDocument" type="tns:dutchBusinessGetExtractDocumentRequestType" />
+      <xsd:element name="dutchBusinessGetExtractDocumentResponse" type="tns:dutchBusinessGetExtractDocumentResponseType" />
+      <xsd:element name="dutchBusinessGetExtractDocumentData" type="tns:dutchBusinessGetExtractDocumentDataRequestType" />
+      <xsd:element name="dutchBusinessGetExtractDocumentDataResponse" type="tns:dutchBusinessGetExtractDocumentDataResponseType" />
+      <xsd:element name="dutchBusinessUpdateCheckDossier" type="tns:dutchBusinessUpdateCheckDossierRequestType" />
+      <xsd:element name="dutchBusinessUpdateCheckDossierResponse" type="tns:dutchBusinessUpdateCheckDossierResponseType" />
+      <xsd:element name="dutchBusinessUpdateGetChangedDossiers" type="tns:dutchBusinessUpdateGetChangedDossiersRequestType" />
+      <xsd:element name="dutchBusinessUpdateGetChangedDossiersResponse" type="tns:dutchBusinessUpdateGetChangedDossiersResponseType" />
+      <xsd:element name="dutchBusinessUpdateGetDossiers" type="tns:dutchBusinessUpdateGetDossiersRequestType" />
+      <xsd:element name="dutchBusinessUpdateGetDossiersResponse" type="tns:dutchBusinessUpdateGetDossiersResponseType" />
+      <xsd:element name="dutchBusinessUpdateAddDossier" type="tns:dutchBusinessUpdateAddDossierRequestType" />
+      <xsd:element name="dutchBusinessUpdateAddDossierResponse" type="tns:dutchBusinessUpdateAddDossierResponseType" />
+      <xsd:element name="dutchBusinessUpdateRemoveDossier" type="tns:dutchBusinessUpdateRemoveDossierRequestType" />
+      <xsd:element name="dutchBusinessUpdateRemoveDossierResponse" type="tns:dutchBusinessUpdateRemoveDossierResponseType" />
+      <xsd:element name="dutchBusinessSearchParameters" type="tns:dutchBusinessSearchParametersRequestType" />
+      <xsd:element name="dutchBusinessSearchParametersResponse" type="tns:dutchBusinessSearchParametersResponseType" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="loginRequest">
+    <wsdl:part name="parameters" element="tns:login" />
+  </wsdl:message>
+  <wsdl:message name="loginResponse">
+    <wsdl:part name="parameters" element="tns:loginResponse" />
+  </wsdl:message>
+  <wsdl:message name="Headers">
+    <wsdl:part name="HeaderLogin" element="tns:HeaderLogin" />
+    <wsdl:part name="HeaderAuthenticate" element="tns:HeaderAuthenticate" />
+  </wsdl:message>
+  <wsdl:message name="logoutRequest">
+    <wsdl:part name="parameters" element="tns:logout" />
+  </wsdl:message>
+  <wsdl:message name="logoutResponse">
+    <wsdl:part name="parameters" element="tns:logoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="dutchBusinessGetDossierRequest">
+    <wsdl:part name="parameters" element="tns:dutchBusinessGetDossier" />
+  </wsdl:message>
+  <wsdl:message name="dutchBusinessGetDossierResponse">
+    <wsdl:part name="parameters" element="tns:dutchBusinessGetDossierResponse" />
+  </wsdl:message>
+  <wsdl:message name="dutchBusinessSearchDossierNumberRequest">
+    <wsdl:part name="parameters" element="tns:dutchBusinessSearchDossierNumber" />
+  </wsdl:message>
+  <wsdl:message name="dutchBusinessSearchDossierNumberResponse">
+    <wsdl:part name="parameters" element="tns:dutchBusinessSearchDossierNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="dutchBusinessSearchParametersV2Request">
+    <wsdl:part name="parameters" element="tns:dutchBusinessSearchParametersV2" />
+  </wsdl:message>
+  <wsdl:message name="dutchBusinessSearchParametersV2Response">
+    <wsdl:part name="parameters" element="tns:dutchBusinessSearchParametersV2Response" />
+  </wsdl:message>
+  <wsdl:message name="dutchBusinessSearchPostcodeRequest">
+    <wsdl:part name="parameters" element="tns:dutchBusinessSearchPostcode" />
+  </wsdl:message>
+  <wsdl:message name="dutchBusinessSearchPostcodeResponse">
+    <wsdl:part name="parameters" element="tns:dutchBusinessSearchPostcodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="dutchBusinessSearchSelectionRequest">
+    <wsdl:part name="parameters" element="tns:dutchBusinessSearchSelection" />
+  </wsdl:message>
+  <wsdl:message name="dutchBusinessSearchSelectionResponse">
+    <wsdl:part name="parameters" element="tns:dutchBusinessSearchSelectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="dutchBusinessGetExtractDocumentRequest">
+    <wsdl:part name="parameters" element="tns:dutchBusinessGetExtractDocument" />
+  </wsdl:message>
+  <wsdl:message name="dutchBusinessGetExtractDocumentResponse">
+    <wsdl:part name="parameters" element="tns:dutchBusinessGetExtractDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="dutchBusinessGetExtractDocumentDataRequest">
+    <wsdl:part name="parameters" element="tns:dutchBusinessGetExtractDocumentData" />
+  </wsdl:message>
+  <wsdl:message name="dutchBusinessGetExtractDocumentDataResponse">
+    <wsdl:part name="parameters" element="tns:dutchBusinessGetExtractDocumentDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="dutchBusinessUpdateCheckDossierRequest">
+    <wsdl:part name="parameters" element="tns:dutchBusinessUpdateCheckDossier" />
+  </wsdl:message>
+  <wsdl:message name="dutchBusinessUpdateCheckDossierResponse">
+    <wsdl:part name="parameters" element="tns:dutchBusinessUpdateCheckDossierResponse" />
+  </wsdl:message>
+  <wsdl:message name="dutchBusinessUpdateGetChangedDossiersRequest">
+    <wsdl:part name="parameters" element="tns:dutchBusinessUpdateGetChangedDossiers" />
+  </wsdl:message>
+  <wsdl:message name="dutchBusinessUpdateGetChangedDossiersResponse">
+    <wsdl:part name="parameters" element="tns:dutchBusinessUpdateGetChangedDossiersResponse" />
+  </wsdl:message>
+  <wsdl:message name="dutchBusinessUpdateGetDossiersRequest">
+    <wsdl:part name="parameters" element="tns:dutchBusinessUpdateGetDossiers" />
+  </wsdl:message>
+  <wsdl:message name="dutchBusinessUpdateGetDossiersResponse">
+    <wsdl:part name="parameters" element="tns:dutchBusinessUpdateGetDossiersResponse" />
+  </wsdl:message>
+  <wsdl:message name="dutchBusinessUpdateAddDossierRequest">
+    <wsdl:part name="parameters" element="tns:dutchBusinessUpdateAddDossier" />
+  </wsdl:message>
+  <wsdl:message name="dutchBusinessUpdateAddDossierResponse">
+    <wsdl:part name="parameters" element="tns:dutchBusinessUpdateAddDossierResponse" />
+  </wsdl:message>
+  <wsdl:message name="dutchBusinessUpdateRemoveDossierRequest">
+    <wsdl:part name="parameters" element="tns:dutchBusinessUpdateRemoveDossier" />
+  </wsdl:message>
+  <wsdl:message name="dutchBusinessUpdateRemoveDossierResponse">
+    <wsdl:part name="parameters" element="tns:dutchBusinessUpdateRemoveDossierResponse" />
+  </wsdl:message>
+  <wsdl:message name="dutchBusinessSearchParametersRequest">
+    <wsdl:part name="parameters" element="tns:dutchBusinessSearchParameters" />
+  </wsdl:message>
+  <wsdl:message name="dutchBusinessSearchParametersResponse">
+    <wsdl:part name="parameters" element="tns:dutchBusinessSearchParametersResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Webservices.nlPortType">
+    <wsdl:operation name="login">
+      <documentation>Logs the user in using username and password, returns a reactid for authentication in further requests</documentation>
+      <wsdl:input message="tns:loginRequest" />
+      <wsdl:output message="tns:loginResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="logout">
+      <documentation>Logs the user out, destroys the session associated with the reactid</documentation>
+      <wsdl:input message="tns:logoutRequest" />
+      <wsdl:output message="tns:logoutResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="dutchBusinessGetDossier">
+      <documentation>Retrieve data on a business establishment</documentation>
+      <wsdl:input message="tns:dutchBusinessGetDossierRequest" />
+      <wsdl:output message="tns:dutchBusinessGetDossierResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="dutchBusinessSearchDossierNumber">
+      <documentation>Search for business establishments using a known identifier</documentation>
+      <wsdl:input message="tns:dutchBusinessSearchDossierNumberRequest" />
+      <wsdl:output message="tns:dutchBusinessSearchDossierNumberResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="dutchBusinessSearchParametersV2">
+      <documentation>Find business establishments using a variety of parameters</documentation>
+      <wsdl:input message="tns:dutchBusinessSearchParametersV2Request" />
+      <wsdl:output message="tns:dutchBusinessSearchParametersV2Response" />
+    </wsdl:operation>
+    <wsdl:operation name="dutchBusinessSearchPostcode">
+      <documentation>Find business establishments based on postcode and house number</documentation>
+      <wsdl:input message="tns:dutchBusinessSearchPostcodeRequest" />
+      <wsdl:output message="tns:dutchBusinessSearchPostcodeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="dutchBusinessSearchSelection">
+      <documentation>Search for businesses matching all of the given criteria.</documentation>
+      <wsdl:input message="tns:dutchBusinessSearchSelectionRequest" />
+      <wsdl:output message="tns:dutchBusinessSearchSelectionResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="dutchBusinessGetExtractDocument">
+      <documentation>Retrieve a Chamber of Commerce extract document (Dutch: Uittreksel Handelsregister)</documentation>
+      <wsdl:input message="tns:dutchBusinessGetExtractDocumentRequest" />
+      <wsdl:output message="tns:dutchBusinessGetExtractDocumentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="dutchBusinessGetExtractDocumentData">
+      <documentation>Retrieve a Chamber of Commerce extract document (Dutch: Uittreksel Handelsregister)</documentation>
+      <wsdl:input message="tns:dutchBusinessGetExtractDocumentDataRequest" />
+      <wsdl:output message="tns:dutchBusinessGetExtractDocumentDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="dutchBusinessUpdateCheckDossier">
+      <documentation>Retrieve information on the last change of a business establishment</documentation>
+      <wsdl:input message="tns:dutchBusinessUpdateCheckDossierRequest" />
+      <wsdl:output message="tns:dutchBusinessUpdateCheckDossierResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="dutchBusinessUpdateGetChangedDossiers">
+      <documentation>Retrieve all dossiers changed since the given date.</documentation>
+      <wsdl:input message="tns:dutchBusinessUpdateGetChangedDossiersRequest" />
+      <wsdl:output message="tns:dutchBusinessUpdateGetChangedDossiersResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="dutchBusinessUpdateGetDossiers">
+      <documentation>Returns a list of all dossiers that have been updated since they were last retrieved by the user</documentation>
+      <wsdl:input message="tns:dutchBusinessUpdateGetDossiersRequest" />
+      <wsdl:output message="tns:dutchBusinessUpdateGetDossiersResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="dutchBusinessUpdateAddDossier">
+      <documentation>Add a dossier to the list of dossiers for which the user (the user whose credentials are used to make the call) wants to receive updates</documentation>
+      <wsdl:input message="tns:dutchBusinessUpdateAddDossierRequest" />
+      <wsdl:output message="tns:dutchBusinessUpdateAddDossierResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="dutchBusinessUpdateRemoveDossier">
+      <documentation>Remove a dossier from the list of dossiers for which the user (the user whose credentials are used to make the call) wants to receive updates.</documentation>
+      <wsdl:input message="tns:dutchBusinessUpdateRemoveDossierRequest" />
+      <wsdl:output message="tns:dutchBusinessUpdateRemoveDossierResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="dutchBusinessSearchParameters">
+      <documentation>Find business establishments using a variety of parameters</documentation>
+      <wsdl:input message="tns:dutchBusinessSearchParametersRequest" />
+      <wsdl:output message="tns:dutchBusinessSearchParametersResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Webservices.nlBinding" type="tns:Webservices.nlPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="login">
+      <soap:operation soapAction="https://ws1.webservices.nl/dutchbusiness/soap_doclit.php/login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderLogin" use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logout">
+      <soap:operation soapAction="https://ws1.webservices.nl/dutchbusiness/soap_doclit.php/logout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderLogin" use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dutchBusinessGetDossier">
+      <soap:operation soapAction="https://ws1.webservices.nl/dutchbusiness/soap_doclit.php/dutchBusinessGetDossier" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderLogin" use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dutchBusinessSearchDossierNumber">
+      <soap:operation soapAction="https://ws1.webservices.nl/dutchbusiness/soap_doclit.php/dutchBusinessSearchDossierNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderLogin" use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dutchBusinessSearchParametersV2">
+      <soap:operation soapAction="https://ws1.webservices.nl/dutchbusiness/soap_doclit.php/dutchBusinessSearchParametersV2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderLogin" use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dutchBusinessSearchPostcode">
+      <soap:operation soapAction="https://ws1.webservices.nl/dutchbusiness/soap_doclit.php/dutchBusinessSearchPostcode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderLogin" use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dutchBusinessSearchSelection">
+      <soap:operation soapAction="https://ws1.webservices.nl/dutchbusiness/soap_doclit.php/dutchBusinessSearchSelection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderLogin" use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dutchBusinessGetExtractDocument">
+      <soap:operation soapAction="https://ws1.webservices.nl/dutchbusiness/soap_doclit.php/dutchBusinessGetExtractDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderLogin" use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dutchBusinessGetExtractDocumentData">
+      <soap:operation soapAction="https://ws1.webservices.nl/dutchbusiness/soap_doclit.php/dutchBusinessGetExtractDocumentData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderLogin" use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dutchBusinessUpdateCheckDossier">
+      <soap:operation soapAction="https://ws1.webservices.nl/dutchbusiness/soap_doclit.php/dutchBusinessUpdateCheckDossier" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderLogin" use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dutchBusinessUpdateGetChangedDossiers">
+      <soap:operation soapAction="https://ws1.webservices.nl/dutchbusiness/soap_doclit.php/dutchBusinessUpdateGetChangedDossiers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderLogin" use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dutchBusinessUpdateGetDossiers">
+      <soap:operation soapAction="https://ws1.webservices.nl/dutchbusiness/soap_doclit.php/dutchBusinessUpdateGetDossiers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderLogin" use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dutchBusinessUpdateAddDossier">
+      <soap:operation soapAction="https://ws1.webservices.nl/dutchbusiness/soap_doclit.php/dutchBusinessUpdateAddDossier" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderLogin" use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dutchBusinessUpdateRemoveDossier">
+      <soap:operation soapAction="https://ws1.webservices.nl/dutchbusiness/soap_doclit.php/dutchBusinessUpdateRemoveDossier" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderLogin" use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dutchBusinessSearchParameters">
+      <soap:operation soapAction="https://ws1.webservices.nl/dutchbusiness/soap_doclit.php/dutchBusinessSearchParameters" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderLogin" use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:Headers" part="HeaderAuthenticate" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Webservices.nl">
+    <wsdl:port name="Webservices.nlPort" binding="tns:Webservices.nlBinding">
+      <soap:address location="https://ws1.webservices.nl/dutchbusiness/soap_doclit.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
