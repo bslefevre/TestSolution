@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Net;
 using System.Text;
 using System.Windows.Forms;
@@ -15,7 +16,13 @@ namespace WindowsFormsApplication
 
         private void button1_Click(object sender, EventArgs e)
         {
-            textBox2.Text = Translate(textBox1.Text, "nl", "es");
+            var splittedString = textBox1.Text.Split('\n');
+            textBox2.Text = string.Empty;
+
+            foreach (var trimmedString in splittedString.Select(s => s.Trim()))
+            {
+                textBox2.Text += Translate(trimmedString, "nl", "fr") + Environment.NewLine;
+            }
         }
 
         public static string Translate(string input, string from, string to)
