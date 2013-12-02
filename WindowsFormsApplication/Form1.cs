@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -16,13 +17,54 @@ namespace WindowsFormsApplication
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var splittedString = textBox1.Text.Split('\n');
+            var splittedStringList = SplitString(textBox1.Text);
             textBox2.Text = string.Empty;
 
-            foreach (var trimmedString in splittedString.Select(s => s.Trim()))
+            foreach (var @string in splittedStringList.Where(x => !string.IsNullOrEmpty(x)))
             {
-                textBox2.Text += Translate(trimmedString, "nl", "fr") + Environment.NewLine;
+                var trimmedString = @string.Trim();
+                trimmedString = Translate(trimmedString, "nl", "en");
+                if (@string.EndsWith("\r"))
+                    trimmedString += Environment.NewLine;
+
+                textBox2.Text += trimmedString;
             }
+        }
+
+        /// <summary>
+        /// To split the string in pieces by NewRule and end of a sentence.
+        /// </summary>
+        /// <param name="text">List of sentences to translate.</param>
+        /// <returns></returns>
+        private static IEnumerable<string> SplitString(string text)
+        {
+            var splittedStringList = new List<string>();
+
+            var splittedTextArray = text.Split('\n');
+
+            foreach (var s in splittedTextArray)
+            {
+                var nr = 0;
+                while (s.IndexOf(".", nr) > -1 || s.IndexOf(".\r", nr) > -1)
+                {
+                    var ir = s.IndexOf(".\r", nr);
+                    var ip = s.IndexOf(".", nr);
+                    var i = 0;
+                    if (ip < ir || ir == -1)
+                        i = ip + 1;
+                    else if (ip == ir && ir > -1)
+                        i = ir + 2;
+                    else if (ir > -1)
+                        i = ir + 2;
+                    splittedStringList.Add(s.Substring(nr, i - nr));
+                    nr = i;
+                }
+
+                if (!string.IsNullOrEmpty(s.Substring(nr, s.Length - nr)))
+                    splittedStringList.Add(s.Substring(nr, s.Length - nr));
+            }
+
+            return splittedStringList;
         }
 
         public static string Translate(string input, string from, string to)

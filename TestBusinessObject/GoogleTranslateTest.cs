@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
@@ -48,12 +49,60 @@ namespace TestBusinessObject
             {
                 foreach (DictionaryEntry dictionary in rrw)
                 {
-                    var translatedValue = Translate(dictionary.Value.ToString(), "nl", toLanguage.ToLower());
+                    var translatedValue = string.Empty;
+                    if (!string.IsNullOrEmpty(dictionary.Value.ToString()))
+                    {
+                        var splittedStringList = SplitString(dictionary.Value.ToString());
+                        foreach (var @string in splittedStringList.Where(x => !string.IsNullOrEmpty(x)))
+                        {
+                            var trimmedString = @string.Trim();
+                            trimmedString = Translate(trimmedString, "nl", toLanguage.ToLower());
+                            if (@string.EndsWith("\r"))
+                                trimmedString += Environment.NewLine;
+                            translatedValue += trimmedString;
+                        }
+                    }
                     if (translatedValue.IsNullOrEmpty())
                         translatedValue = string.Format("-TODO-{0}", dictionary.Value);
                     resXResourceWriter.AddResource(dictionary.Key.ToString(), translatedValue);
                 }
             }
+        }
+
+        /// <summary>
+        /// To split the string in pieces by NewRule and end of a sentence.
+        /// </summary>
+        /// <param name="text">List of sentences to translate.</param>
+        /// <returns></returns>
+        private static IEnumerable<string> SplitString(string text)
+        {
+            var splittedStringList = new List<string>();
+
+            var splittedTextArray = text.Split('\n');
+
+            foreach (var s in splittedTextArray)
+            {
+                var nr = 0;
+                while (s.IndexOf(".", nr) > -1 || s.IndexOf(".\r", nr) > -1)
+                {
+                    var ir = s.IndexOf(".\r", nr);
+                    var ip = s.IndexOf(".", nr);
+                    var i = 0;
+                    if (ip < ir || ir == -1)
+                        i = ip + 1;
+                    else if (ip == ir && ir > -1)
+                        i = ir + 2;
+                    else if (ir > -1)
+                        i = ir + 2;
+                    splittedStringList.Add(s.Substring(nr, i - nr));
+                    nr = i;
+                }
+
+                if (!string.IsNullOrEmpty(s.Substring(nr, s.Length - nr)))
+                    splittedStringList.Add(s.Substring(nr, s.Length - nr));
+            }
+
+            return splittedStringList;
         }
 
         private class Res

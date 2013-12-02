@@ -71,6 +71,7 @@
     <Compile Include="GoogleTranslateTest.cs" />
     <Compile Include="HtmlKeyWordVervangerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RandomBusinessObjectTest.cs" />
     <Compile Include="WerkstroomActieDefinitieTest.cs" />
   </ItemGroup>
   <ItemGroup>
