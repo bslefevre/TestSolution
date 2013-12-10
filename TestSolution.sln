@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandigeStandAloneCode", "HandigeStandAloneCode\HandigeStandAloneCode.csproj", "{4FC97E73-D4B6-4FD2-B5B4-14802646D592}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateSolution", "PrivateSolution\PrivateSolution.csproj", "{77367FB9-E3C1-454E-A2B5-399181320E74}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = TestSolution.vsmdi
@@ -81,6 +83,16 @@ Global
 		{4FC97E73-D4B6-4FD2-B5B4-14802646D592}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{4FC97E73-D4B6-4FD2-B5B4-14802646D592}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{4FC97E73-D4B6-4FD2-B5B4-14802646D592}.Release|x86.ActiveCfg = Release|Any CPU
+		{77367FB9-E3C1-454E-A2B5-399181320E74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77367FB9-E3C1-454E-A2B5-399181320E74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77367FB9-E3C1-454E-A2B5-399181320E74}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{77367FB9-E3C1-454E-A2B5-399181320E74}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{77367FB9-E3C1-454E-A2B5-399181320E74}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{77367FB9-E3C1-454E-A2B5-399181320E74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77367FB9-E3C1-454E-A2B5-399181320E74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77367FB9-E3C1-454E-A2B5-399181320E74}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{77367FB9-E3C1-454E-A2B5-399181320E74}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{77367FB9-E3C1-454E-A2B5-399181320E74}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

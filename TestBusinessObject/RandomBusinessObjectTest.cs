@@ -3,6 +3,7 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using Alure.Base.BL;
+using Alure.Base.BL.Test;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TestBusinessObject
@@ -19,9 +20,20 @@ namespace TestBusinessObject
             Assert.IsTrue(yes2);
         }
 
-        public void Controls()
+        [TestMethod]
+        public void HeeftToevoegVerwijderWijzigRechten()
         {
-            
+            Autorizer.InternalAutorizer = () => new TestAutorizer(true){ ObjectAutorisatie = id => id==333 };
+            // Toevoegen
+            var magToevoegen = Autorizer.IsObjectGeautoriseerd(51270);
+            //Verwijderen
+            var magVerwijderen = Autorizer.IsObjectGeautoriseerd(51271);
+            // Wijzigen
+            var magWijzigen = Autorizer.IsObjectGeautoriseerd(51272);
+
+            Assert.IsTrue(magToevoegen);
+            Assert.IsTrue(magVerwijderen);
+            Assert.IsTrue(magWijzigen);
         }
     }
 }
