@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>GoogleSearchApi</id>
+    <version>1.0.1</version>
+    <title>Google search Api</title>
+    <authors>mitja.GTI</authors>
+    <owners>mitja.GTI</owners>
+    <licenseUrl>http://www.opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>http://www.mitjagti.net/Projects/NuGet/GoogleSearchApi</projectUrl>
+    <iconUrl>https://nugetgallery.blob.core.windows.net/icons/GoogleSearchApi.1.0.1.jpg</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Google Custom Search API for MVC. Please check project site for implementation.</description>
+    <summary>This package is intended for developers that wish to implement Google Custom Search API with MVC project. Please check project site for implementation.</summary>
+    <releaseNotes />
+    <copyright>mitjagti.net</copyright>
+    <language />
+    <tags>Google Search WebSite API MVC</tags>
+  </metadata>
+</package>

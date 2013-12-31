@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Repository;
 using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
@@ -99,6 +101,81 @@ namespace TestXtraUserControl
         void gridControl1_DragEnter(object sender, DragEventArgs e)
         {
             var dataObject = e.Data;
+        }
+
+        [TestMethod]
+        [TestCategory("UnitTest")]
+        public void MemoEditRepositoryEx()
+        {
+            var userControl = new XtraUserControl { Width = 300, Height = 300, Dock = DockStyle.Fill };
+
+            var gridView1 = new GridView();
+            var gridControl1 = new GridControl {MainView = gridView1};
+            gridControl1.ViewCollection.Add(gridView1);
+            gridView1.GridControl = gridControl1;
+            
+            var gridColumn = new GridColumn();
+            var repositoryItemMemoEdit = new RepositoryItemMemoEditEx();
+            gridColumn.Caption = "MemoEdit";
+            gridColumn.ColumnEdit = repositoryItemMemoEdit;
+            gridColumn.FieldName = "Value";
+            gridColumn.Visible = true;
+            gridView1.Columns.Add(gridColumn);
+            var repeatedString = string.Empty;
+            for (int i = 0; i < 10; i++)
+            {
+                repeatedString += "Waarde " + i + " {0}";
+            }
+            
+            var waarde1 = string.Format(repeatedString, Environment.NewLine);
+            var dataSource = new Dictionary<int, string> {{1, waarde1}, {2, "Waarde2"}, {3, "Waarde3"}};
+            var bindingSource = new BindingSource();
+            
+            bindingSource.DataSource = dataSource;
+            
+            gridControl1.DataSource = bindingSource;
+            
+            var layoutControl = new LayoutControl { Dock = DockStyle.Fill };
+            layoutControl.Controls.Add(gridControl1);
+            userControl.Controls.Add(layoutControl);
+            var lci = layoutControl.AddItem(string.Empty, gridControl1);
+            lci.TextVisible = false;
+            var xtraForm = new XtraForm { Text = "MemoEditRepositoryEx" };
+            xtraForm.Controls.Add(userControl);
+            var dialogResult = xtraForm.ShowDialog();
+            if (dialogResult == DialogResult.OK) xtraForm.Close();
+        }
+    }
+
+
+
+    public class RepositoryItemMemoEditEx : RepositoryItemMemoEdit
+    {
+        public RepositoryItemMemoEditEx()
+        {
+            Click += RepositoryItemMemoEditExClick;
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            Click -= RepositoryItemMemoEditExClick;
+            base.Dispose(disposing);
+        }
+
+        public override bool AutoHeight
+        {
+            get
+            {
+                return true;
+            }
+        }
+
+        private void RepositoryItemMemoEditExClick(object sender, EventArgs eventArgs)
+        {
+            var memoEdit = sender as MemoEdit;
+            if (memoEdit == null) return;
+            var height = memoEdit.Lines.ToArray().Count() * 6;
+            memoEdit.Height = height;
         }
     }
 }
