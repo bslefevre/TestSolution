@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using Alure.Base.BL.Test;
-using DevExpress.XtraEditors;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+//using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace WindowsFormsApplication
 {
@@ -20,20 +19,21 @@ namespace WindowsFormsApplication
             //form.Controls.Add(new XtraUserControl2 {Dock = DockStyle.Fill});
             //form.ShowDialog();
 
-            Application.Run(new LAN { Width = 800, Height = 800 });
+            //Application.Run(new LAN { Width = 800, Height = 800 });
+            Application.Run(new Form1());
         }
     }
 
-    [TestClass]
-    public class TestClassDing : TestBase
-    {
-        [TestMethod]
-        public void TestAllesDan()
-        {
-            var form = new XtraForm { Text = "Test", Width = 800, Height = 800};
-            var xtraUserControl2 = new XtraUserControl2 {Dock = DockStyle.Fill};
-            form.Controls.Add(xtraUserControl2);
-            form.ShowDialog();
-        }
-    }
+    //[TestClass]
+    //public class TestClassDing : TestBase
+    //{
+    //    [TestMethod]
+    //    public void TestAllesDan()
+    //    {
+    //        var form = new XtraForm { Text = "Test", Width = 800, Height = 800};
+    //        var xtraUserControl2 = new XtraUserControl2 {Dock = DockStyle.Fill};
+    //        form.Controls.Add(xtraUserControl2);
+    //        form.ShowDialog();
+    //    }
+    //}
 }

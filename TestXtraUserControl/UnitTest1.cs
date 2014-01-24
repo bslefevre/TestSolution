@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Forms;
+using Alure.Base.BL;
+using Alure.Base.BL.Caching;
+using Alure.Base.BL.Queries;
+using Alure.Base.PL;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Repository;
+using DevExpress.XtraGrid.Views.BandedGrid;
 using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraLayout;
@@ -135,6 +140,69 @@ namespace TestXtraUserControl
             
             gridControl1.DataSource = bindingSource;
             
+            var layoutControl = new LayoutControl { Dock = DockStyle.Fill };
+            layoutControl.Controls.Add(gridControl1);
+            userControl.Controls.Add(layoutControl);
+            var lci = layoutControl.AddItem(string.Empty, gridControl1);
+            lci.TextVisible = false;
+            var xtraForm = new XtraForm { Text = "MemoEditRepositoryEx" };
+            xtraForm.Controls.Add(userControl);
+            var dialogResult = xtraForm.ShowDialog();
+            if (dialogResult == DialogResult.OK) xtraForm.Close();
+        }
+
+        [TestMethod]
+        [TestCategory("UnitTest")]
+        public void BandedGridView_Test()
+        {
+            var userControl = new XtraUserControl { Width = 300, Height = 300, Dock = DockStyle.Fill };
+
+            var gridView1 = new BandedGridView();
+            var gridControl1 = new GridControl { MainView = gridView1 };
+            gridControl1.ViewCollection.Add(gridView1);
+            gridView1.GridControl = gridControl1;
+
+            var gridBand = new GridBand {Name = "TestBand",Caption = "TestBandCap"};
+            var gridBand2 = new GridBand { Name = "TestBand2", Caption = "TestBandCap2" };
+            gridView1.Bands.AddRange(new[] {gridBand, gridBand2});
+
+            var bandedGridColumn = new BandedGridColumn
+                {
+                    Caption = "MemoEdit",
+                    FieldName = "Value",
+                    Visible = true,
+                    OwnerBand = gridBand
+                };
+
+            var bandedGridColumn2 = new BandedGridColumn
+            {
+                Caption = "MemoEdit2",
+                FieldName = "Value",
+                Visible = true,
+                OwnerBand = gridBand
+            };
+
+            var bandedGridColumn3 = new BandedGridColumn
+            {
+                Caption = "MemoEdit3",
+                FieldName = "Value",
+                Visible = true,
+                OwnerBand = gridBand2
+            };
+
+            gridView1.Columns.AddRange(new[] { bandedGridColumn, bandedGridColumn2, bandedGridColumn3 });
+            var repeatedString = string.Empty;
+            for (var i = 0; i < 10; i++)
+            {
+                repeatedString += "Waarde " + i + " {0}";
+            }
+
+            var waarde1 = string.Format(repeatedString, Environment.NewLine);
+            var dataSource = new Dictionary<int, string> { { 1, waarde1 }, { 2, "Waarde2" }, { 3, "Waarde3" } };
+            var bindingSource = new BindingSource {DataSource = dataSource};
+
+            gridControl1.DataSource = bindingSource;
+
             var layoutControl = new LayoutControl { Dock = DockStyle.Fill };
             layoutControl.Controls.Add(gridControl1);
             userControl.Controls.Add(layoutControl);

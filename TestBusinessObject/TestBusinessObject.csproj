@@ -37,31 +37,50 @@
       <HintPath>..\..\..\..\..\..\..\AlureOntwikkelingDev12\Alure.WS.BL\bin\Debug\Alure.Base.BL.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Alure.Base.BL.Integratie.Test">
+      <HintPath>..\..\..\..\..\..\..\AlureOntwikkelingDev12\Alure.Base.BL.Integratie.Test\bin\Debug\Alure.Base.BL.Integratie.Test.dll</HintPath>
+    </Reference>
     <Reference Include="Alure.Base.BL.Test">
       <HintPath>..\..\..\..\..\..\..\AlureOntwikkelingDev12\Alure.Base.BL.Test\bin\Debug\Alure.Base.BL.Test.dll</HintPath>
+    </Reference>
+    <Reference Include="Alure.Base.DA">
+      <HintPath>..\..\..\..\..\..\..\AlureOntwikkelingDev12\Alure.Base.DA\bin\Debug\Alure.Base.DA.dll</HintPath>
+    </Reference>
+    <Reference Include="Alure.Base.PL">
+      <HintPath>..\..\..\..\..\..\..\AlureOntwikkelingDev12\Alure.Base.PL\bin\Debug\Alure.Base.PL.dll</HintPath>
     </Reference>
     <Reference Include="Alure.CRM.BL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dccc70a6c97cd977, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\..\..\AlureOntwikkelingDev12\Alure.CRM.BL\bin\Debug\Alure.CRM.BL.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Alure.CRM.DA">
+      <HintPath>..\..\..\..\..\..\..\AlureOntwikkelingDev12\Alure.CRM.DA\bin\Debug\Alure.CRM.DA.dll</HintPath>
+    </Reference>
+    <Reference Include="Alure.Uren.BL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dccc70a6c97cd977, processorArchitecture=MSIL" />
     <Reference Include="Alure.WS.BL">
       <HintPath>..\..\..\..\..\..\..\AlureOntwikkelingDev12\Alure.WS.BL\bin\Debug\Alure.WS.BL.dll</HintPath>
       <Private>True</Private>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Alure.WS.DA">
+      <HintPath>..\..\..\..\..\..\..\AlureOntwikkelingDev12\Alure.WS.DA\bin\Debug\Alure.WS.DA.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Data.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net40\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Moq, Version=4.0.10827.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -74,6 +93,7 @@
     <Compile Include="ExtensionsTest.cs" />
     <Compile Include="GoogleTranslateTest.cs" />
     <Compile Include="HtmlKeyWordVervangerTest.cs" />
+    <Compile Include="MedewerkerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomBusinessObjectTest.cs" />
     <Compile Include="UnitTest1.cs" />
@@ -81,12 +101,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\WindowsFormsApplication\WindowsFormsApplication.csproj">
-      <Project>{E31343BF-EB5A-4601-9B9A-0763A018F133}</Project>
-      <Name>WindowsFormsApplication</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

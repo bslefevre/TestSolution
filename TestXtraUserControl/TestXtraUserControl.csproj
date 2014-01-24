@@ -33,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Alure.Base.BL">
+      <HintPath>..\TestBusinessObject\bin\Debug\Alure.Base.BL.dll</HintPath>
+    </Reference>
+    <Reference Include="Alure.Base.PL">
+      <HintPath>..\..\..\..\..\..\..\AlureOntwikkelingDev12\Alure.Base.PL\bin\Debug\Alure.Base.PL.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Data.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.RichEdit.v12.2.Core, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />

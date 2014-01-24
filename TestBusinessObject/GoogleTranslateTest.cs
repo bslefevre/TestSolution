@@ -40,31 +40,45 @@ namespace TestBusinessObject
             Assert.AreEqual(43, subCount);
         }
 
+        private static Collection<Exception> _errorCollection;
+
         private static void CreateResourceFile(Res res, string toLanguage)
         {
             if (!res.OriginalResourceFileExists) return;
             var rrw = new ResXResourceReader(res.OriginalResourcePath);
+            if (res.OriginalResourcePath.Contains("Properties"))
+            {
+                rrw.BasePath = @"C:\AlureOntwikkelingDev12\Alure.WS.BL\Resources";
+            }
+
             var fileStream = File.Open(string.Format(res.NewResourcePath, toLanguage.ToUpper()), FileMode.OpenOrCreate);
             using (var resXResourceWriter = new ResXResourceWriter(fileStream))
             {
-                foreach (DictionaryEntry dictionary in rrw)
+                try
                 {
-                    var translatedValue = string.Empty;
-                    if (!string.IsNullOrEmpty(dictionary.Value.ToString()))
+                    foreach (var dictionary in rrw.OfType<DictionaryEntry>())
                     {
-                        var splittedStringList = SplitString(dictionary.Value.ToString());
-                        foreach (var @string in splittedStringList.Where(x => !string.IsNullOrEmpty(x)))
+                        var translatedValue = string.Empty;
+                        if (!string.IsNullOrEmpty(dictionary.Value.ToString()))
                         {
-                            var trimmedString = @string.Trim();
-                            trimmedString = Translate(trimmedString, "nl", toLanguage.ToLower());
-                            if (@string.EndsWith("\r"))
-                                trimmedString += Environment.NewLine;
-                            translatedValue += trimmedString;
+                            var splittedStringList = SplitString(dictionary.Value.ToString());
+                            foreach (var @string in splittedStringList.Where(x => !string.IsNullOrEmpty(x)))
+                            {
+                                var trimmedString = @string.Trim();
+                                trimmedString = Translate(trimmedString, "nl", toLanguage.ToLower());
+                                if (@string.EndsWith("\r"))
+                                    trimmedString += Environment.NewLine;
+                                translatedValue += trimmedString;
+                            }
                         }
+                        if (translatedValue.IsNullOrEmpty())
+                            translatedValue = string.Format("-TODO-{0}", dictionary.Value);
+                        resXResourceWriter.AddResource(dictionary.Key.ToString(), translatedValue);
                     }
-                    if (translatedValue.IsNullOrEmpty())
-                        translatedValue = string.Format("-TODO-{0}", dictionary.Value);
-                    resXResourceWriter.AddResource(dictionary.Key.ToString(), translatedValue);
+                }
+                catch (Exception e)
+                {
+                    _errorCollection.Add(e);
                 }
             }
         }
@@ -120,7 +134,7 @@ namespace TestBusinessObject
         {
             const string baseFolder = @"C:\AlureOntwikkelingDev12\";
             var resourceCollection = GetAllResourceFilesWithinAssembly<Alure.WS.BL.WerkstroomTaak>(baseFolder);
-            Assert.AreEqual(15, resourceCollection.Count);
+            Assert.AreEqual(16, resourceCollection.Count);
             var resultCollection =
                 resourceCollection.Where(x => x.OriginalResourceFileExists)
                                   .Select(rese => rese.NewResourceFileExists("en"))
@@ -177,10 +191,10 @@ namespace TestBusinessObject
         public static string Translate(string input, string from, string to)
         {
             var languagePair = string.Format("{0}|{1}", from, to);
-            
+
             var url = String.Format("http://www.google.com/translate_t?hl=en&ie=UTF8&text={0}&langpair={1}", input, languagePair);
             string result;
-            
+
             using (var webClient = new WebClient())
             {
                 webClient.Encoding = Encoding.Default;

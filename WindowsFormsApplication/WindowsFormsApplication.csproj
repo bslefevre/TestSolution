@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WindowsFormsApplication</RootNamespace>
     <AssemblyName>WindowsFormsApplication</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -32,7 +32,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -67,7 +67,7 @@
       <HintPath>..\..\..\..\..\..\..\AlureOntwikkelingDev12\Alure.WS.BL\bin\Debug\Alure.Base.BL.dll</HintPath>
     </Reference>
     <Reference Include="Alure.Base.BL.Test">
-      <HintPath>..\TestBusinessObject\bin\Debug\Alure.Base.BL.Test.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\AlureOntwikkelingDev12\Alure.Base.BL.Test\bin\Debug\Alure.Base.BL.Test.dll</HintPath>
     </Reference>
     <Reference Include="Alure.Base.PL">
       <HintPath>..\..\..\..\..\..\..\AlureOntwikkelingDev12\Alure.Base.PL\bin\Debug\Alure.Base.PL.dll</HintPath>
@@ -83,7 +83,9 @@
     <Reference Include="GoogleSearchAPI">
       <HintPath>..\..\..\..\..\Desktop\DotNet\GoogleSearchAPI.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net20\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json.Net20">
       <HintPath>..\..\..\..\..\Desktop\DotNet\Newtonsoft.Json.Net20.dll</HintPath>
     </Reference>
@@ -91,7 +93,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
@@ -136,20 +137,11 @@
       <DependentUpon>LAN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="XtraUserControl2.resx">
       <DependentUpon>XtraUserControl2.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
