@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Alure;
+using Alure.Autor.BL;
 using Alure.Base.BL;
 using Alure.Base.BL.Caching;
 using Alure.Base.BL.Integratie.Test;
@@ -11,6 +12,7 @@ using Alure.Base.BL.Test;
 using Alure.Base.DA.Helpers;
 using Alure.Base.PL;
 using Alure.Base.PL.Controllers;
+using Alure.CRM.BL;
 using Alure.CRM.BL.Queries;
 using Alure.WS.BL;
 using Alure.WS.BL.Queries;
@@ -205,5 +207,45 @@ namespace TestBusinessObject
         public bool Activator { get; set; }
 
         public bool Betrokkene { get; set; }
+    }
+
+
+    public class EnumToLookUp
+    {
+        public static void CreateEnumLookUpEdit<TEnum>(Func<TEnum, string> shortDesc, Func<TEnum, string> description) where TEnum : struct
+        {
+            var dictionary = new InnolanDictionary<string, string>();
+            foreach (var value in EnumTranslator.GetValues<TEnum>()) dictionary[shortDesc.Invoke(value)] = description.Invoke(value);
+        }
+
+        protected static EnumTranslator _enumTranslator;
+        public static EnumTranslator EnumTranslator
+        {
+            get
+            {
+                if (_enumTranslator == null)
+                {
+                    EnumTranslator = new EnumTranslator();
+                }
+
+                return _enumTranslator;
+            }
+            set
+            {
+                _enumTranslator = value;
+            }
+        }
+    }
+
+    [TestClass]
+    public class TestEnumToLookUp : TestBase
+    {
+        [TestMethod]
+        public void Test()
+        {
+            EnumToLookUp.CreateEnumLookUpEdit<Relatie.SoortWaardes>(x => Relatie.FromSoortWaarde(x),
+                                                                    x =>
+                                                                    BusinessObject.GetLocalizedProperty<Relatie>("SoortWaardes_{0}".Formatteer(x)));
+        }
     }
 }

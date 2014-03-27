@@ -121,9 +121,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DefaultSaveCancelButtonController.cs" />
-    <Compile Include="XtraUserControl2.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="XtraUserControl2.cs" />
     <Compile Include="XtraUserControl2.Designer.cs">
       <DependentUpon>XtraUserControl2.cs</DependentUpon>
     </Compile>
